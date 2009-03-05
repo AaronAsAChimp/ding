@@ -1,0 +1,19 @@
+<?php
+require_once("../Zend/OpenId.php");
+require_once("../Zend/OpenId/Consumer.php");
+require_once("../Zend/OpenId/Extension/Sreg.php");
+
+if(isset($_POST) && isset($_POST['openid_identifier'])) {
+	$sreg = new Zend_OpenId_Extension_Sreg(array(
+	    'nickname'=>false,
+	    'email'=>false,
+	    'fullname'=>false), null, 1.1);
+	$consumer = new Zend_OpenId_Consumer();
+	if (!$consumer->login($_POST['openid_identifier'],
+	                      'register.php',
+	                      null,
+	                      $sreg)) {
+	    die("OpenID login failed.");
+	}
+}
+?>

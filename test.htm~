@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+<script>
+
+function startMadness() {
+	var crud = new intersector(document.getElementById("canvas"));
+
+	crud.addRect(100,100,150,75);
+	//crud.addTriangle(175,75, 175,150, 275,125);
+	
+	crud.addRect(128,128,256,256);
+
+	crud.addRect(112,350,224,64);
+
+	//crud.addTriangle(10,256, 350, 240, 180, 500);
+
+	crud.intersect();
+}
+
+</script>
+</head>
+<body onload="startMadness()">
+	<canvas width="512" height="512" id="canvas"></canvas>
+</body>
+</html>

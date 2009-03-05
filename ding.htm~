@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+<!-- Magic Public API -->
+<script src="ding.js"></script>
+<!-- Local Magic -->
+<script>
+var mainBuilding = null;
+
+function loadMap() {
+	mainBuilding = new b_building(document.getElementById("main"));
+	//mainBuilding.createBoxPositive(10,10,300,300);
+	//mainBuilding.createBoxPositive(5,15,100,100);
+	//mainBuilding.createBoxNegative(150,70,170,100);
+	//mainBuilding.draw();
+}
+</script>
+</head>
+<body onload="loadMap();">
+	<form>
+		<input type="button" value="Edit Building" onclick="mainBuilding.setEditState()" />
+		<input type="button" value="Add Items" onclick="mainBuilding.setEditState()" />
+		<input type="button" value="View" onclick="mainBuilding.setViewState()" />
+		<input type="button" value="Save" onclick="alert('Can\'t Save')" />
+	</form>
+	<div id="main" style="border: thin solid red;width: 500px; height:500px"></div>
+</body>
+</html>

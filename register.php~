@@ -1,0 +1,27 @@
+<?php
+require_once("Zend/OpenId.php");
+require_once("Zend/OpenId/Consumer.php");
+require_once("Zend/OpenId/Extension/Sreg.php");
+
+$sreg = new Zend_OpenId_Extension_Sreg(array(
+    'nickname'=>false,
+    'email'=>false,
+    'fullname'=>false), null, 1.1);
+$consumer = new Zend_OpenId_Consumer();
+if ($consumer->verify($_GET, $id, $sreg)) {
+    echo "VALID " . htmlspecialchars($id) ."<br>\n";
+    $data = $sreg->getProperties();
+    if (isset($data['nickname'])) {
+        echo "nickname: " . htmlspecialchars($data['nickname']) . "<br>\n";
+    }
+    if (isset($data['email'])) {
+        echo "email: " . htmlspecialchars($data['email']) . "<br>\n";
+    }
+    if (isset($data['fullname'])) {
+        echo "fullname: " . htmlspecialchars($data['fullname']) . "<br>\n";
+    }
+} else {
+    echo "INVALID " . htmlspecialchars($id);
+}
+
+?><a href="register.php">Back</a>

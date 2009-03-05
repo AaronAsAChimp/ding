@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+<!-- Magic Public API -->
+<script src="ding.js"></script>
+<!-- Local Magic -->
+<script>
+var mainBuilding = null;
+
+function loadMap() {
+	mainBuilding = new b_building(document.getElementById("main"));
+}
+</script>
+</head>
+<body onload="loadMap();">
+	<h1>Ding - Floor plan API</h1>
+
+	<p>Ding is a Floor plan API.  Its designed to be similar to the <a href="http://code.google.com/apis/maps/">Google Maps API</a>.  To use this save a copy of <a href="ding.js">ding.js</a>, and call the constructor.  You can the switch modes (Edit, Notes, and View) by calling the appropriate function.</p>
+
+	<h2>b_building Object</h2>
+	<dl>
+		<dt>b_building(div)</dt>
+		<dd>Constructor:  Creates the building in the element passed to it.</dd>
+
+		<dt>b_building.createBox(x,y,w,h)</dt>
+		<dd>Creates an area of floor.</dd>
+
+		<dt>b_building.createNote(x,y,w,h)</dt>
+		<dd>Creates a note.  Its displayed as a red box with an exclaimation icon.</dd>
+
+		<dt>b_building.rebuildDisplayCache()</dt>
+		<dd>Rebuild the cached display information.</dd>
+
+		<dt>b_building.draw()</dt>
+		<dd>Draw the contents of the display cache to the canvas.</dd>
+
+		<dt>b_building.setEditState()</dt>
+		<dd>Switch to edit mode.  Allows the user to edit the floor plan of the building.</dd>
+
+		<dt>b_building.setNoteState()</dt>
+		<dd>Switch to notes mode.  Allows the user to add notes to the building.</dd>
+
+		<dt>b_building.setViewState()</dt>
+		<dd>Switch to view mode.  Allows the user to pan the view.</dd>
+	</dl>
+
+	<form>
+		<input type="button" value="Edit Building" onclick="mainBuilding.setEditState()" />
+		<input type="button" value="Add Notes" onclick="mainBuilding.setNoteState()" />
+		<input type="button" value="View" onclick="mainBuilding.setViewState()" />
+		<input type="button" value="Save" onclick="alert('Can\'t Save')" />
+	</form>
+	<div id="main" style="border: thin solid red;width: 500px; height:500px"></div>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-6310070-1");
+pageTracker._trackPageview();
+</script>
+</body>
+</html>
