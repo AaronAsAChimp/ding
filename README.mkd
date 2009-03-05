@@ -1,0 +1,4 @@
+Ding - Floor plan API
+---------------------
+
+Ding is a Floor plan API. Its designed to be similar to the Google Maps API. To use this save a copy of ding.js, and call the constructor. You can the switch modes (Edit, Notes, and View) by calling the appropriate function.
